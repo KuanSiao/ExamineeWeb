@@ -23,7 +23,7 @@ function App() {
            }}>
           <Header/>
           <Introduction/>
-          <Container  maxWidth="xl" sx={{mt:4, mb:6,flexGrow:1,ml:0, mr:0}}>
+          <Container  maxWidth="xl" sx={{mt:4, mb:6,flexGrow:1}}>
             <Routes>
                <Route index element={<Login/>}></Route>
                <Route path="chooseExam" element={<ChooseExamList/>}></Route>

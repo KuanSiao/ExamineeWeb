@@ -5,8 +5,10 @@ export default function ButtonCustmize({
   children,
   disabled,
   onClick,
+  startIcon,
   color = "#e84c3d",
   disabledColor = "#e48f8f",
+  padding,
   width = "41%",
   height = 48,
   borderRadius = 2,
@@ -16,6 +18,7 @@ export default function ButtonCustmize({
 }) {
   return (
     <Button
+      startIcon={startIcon}  
       size="large"
       variant="contained"
       disabled={disabled}
@@ -25,6 +28,7 @@ export default function ButtonCustmize({
         height,
         borderRadius,
         fontSize,
+        padding,
         backgroundColor: disabled ? disabledColor : color,
         color: "white",
         ...(overrideDisabled && {
@@ -58,4 +62,9 @@ ButtonCustmize.propTypes = {
   fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   overrideDisabled: PropTypes.bool,
   overrideHover: PropTypes.bool,
+  startIcon: PropTypes.node,
+  padding: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };

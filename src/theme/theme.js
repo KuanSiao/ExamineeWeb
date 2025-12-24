@@ -16,6 +16,9 @@ const customerTheme = createTheme({
     white: {
       main: "#fff",
     },
+    blue:{
+      main:"#1976d2",
+    },
     fontColor: {
       disableColor: "#999",
       showColor: "#000",

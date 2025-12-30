@@ -1,18 +1,20 @@
-import { Box, Stack, Button, Typography } from "@mui/material";
+import { Box, Stack, Button } from "@mui/material";
 import { Editor } from "@monaco-editor/react";
 import { useState } from "react";
 import SettingsIcon from '@mui/icons-material/Settings';
 import ButtonCustmize from "../components/Common/ButtonCustmize";
-import { set } from "react-hook-form";
+import SettingPanel from "../components/Setting/SettingPanel";
+import DrawerPanel from "../components/Common/DrawerPanel";
 
 export default function PraticeExamPage() {
-  const [isOpen,setOpen]=useState(false);
+  const [isOpen,setOpen]=useState(open);
   const handleOpenSettingPanel=(state)=>{
     setOpen(state);
   }
   const initialValueTop = `稀有且瀕臨絕種的櫻花鉤吻鮭是冰河時期遺生物，需有適當蔽蔭、冷冽清淨溪水...`;
   return (
     <Box>
+    <DrawerPanel open={isOpen} onClose={()=>handleOpenSettingPanel(false)} children={<SettingPanel/>}/>
       <Stack direction="row" sx={{ justifyContent: "flex-end" }}>
         <Button
           variant="contained"
@@ -27,6 +29,7 @@ export default function PraticeExamPage() {
             width:250,
             fontSize: "1.1rem",
           })}
+          onClick={()=>handleOpenSettingPanel(true)}
         >
           系統設定
         </Button>

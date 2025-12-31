@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
 import { Box, Stack, Typography, Divider } from "@mui/material";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {setExamColor} from "../../store/slice/ColorSlice";
 import ColorPanel from "../Common/ColorPanel";
 import FontPanel from "../Setting/FontPanel";
 import ButtonCustmize from "../Common/ButtonCustmize";
@@ -8,6 +11,16 @@ const FontWarningLabel = styled(Typography)({
   fontWeight: "bold",
 });
 export default function SettingPanel() {
+  const dispatch=useDispatch();
+  const [examSetting, setExamSetting] = useState({
+    backgroundColor: "#000000",
+    fontColor: "#ffffff",
+    fontSize: 16,
+  });
+
+  const handlerSaveSetting=()=>{
+      dispatch(setExamColor(examSetting));
+  }
   return (
     <Stack direction="column" spacing={2}>
       <Box sx={{ p: 5 }}>
@@ -24,11 +37,11 @@ export default function SettingPanel() {
             用至正式測驗。若需重新調整，請點選＂還原為預設＂按鈕。
           </FontWarningLabel>
         </Stack>
-        <ColorPanel text="背景顏色" defaultColor="#FFFFFF" />
-        <ColorPanel text="字體顏色" defaultColor="#000000" />
-        <FontPanel text="字體大小" value={16} />
+        <ColorPanel text="背景顏色" color={examSetting.backgroundColor} setColor={(newColor)=>setExamSetting((pre)=>({...pre,backgroundColor:newColor}))}/>
+        <ColorPanel text="字體顏色" color={examSetting.fontColor} setColor={(newColor)=>setExamSetting((pre)=>({...pre,fontColor:newColor}))}/>
+        <FontPanel text="字體大小" value={examSetting.fontSize}   setSize={(size)=>setExamSetting(prev=>({...prev,fontSize:size}))}/>
         <Stack direction="row" alignItems="flex-start" spacing={5} sx={{mt:5}}>
-          <ButtonCustmize width="30%" height="50">
+          <ButtonCustmize width="30%" height="50" onClick={handlerSaveSetting}>
             儲存設定
           </ButtonCustmize>
           <ButtonCustmize width="30%" height="50" sx={{ml:2}} color="#a19d9c">

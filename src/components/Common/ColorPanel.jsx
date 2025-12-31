@@ -4,9 +4,8 @@ import ColorPicker from "./ColorPicker";
 import PropTypes from "prop-types";
 import {ButtonStyle} from "../../style/settingStyle";
 
-export default function ColorPanel({ text, defaultColor }) {
+export default function ColorPanel({ text, color, setColor }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [color, setColor] = useState(defaultColor);
   const open = Boolean(anchorEl);
   const handlerOpen = (e) => setAnchorEl(e.currentTarget);
   const handlerClose = () => {
@@ -49,5 +48,6 @@ export default function ColorPanel({ text, defaultColor }) {
 
 ColorPanel.propTypes = {
   text: PropTypes.string.isRequired,
-  defaultColor: PropTypes.string.isRequired, 
+  color: PropTypes.string.isRequired,
+  setColor: PropTypes.func.isRequired, 
 };

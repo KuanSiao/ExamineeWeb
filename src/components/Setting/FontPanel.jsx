@@ -1,7 +1,7 @@
 import { Box,Typography,Divider  } from "@mui/material";
 import { TextBoxStyle } from "../../style/settingStyle";
 
-export default function FontPanel({text,value}) {
+export default function FontPanel({text,value,setSize}) {
   return (
     <Box>
       <Box sx={{ display: "flex", alignItems: "center", mt: 4, ml: 2 }}>
@@ -14,7 +14,7 @@ export default function FontPanel({text,value}) {
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
       {/* 顏色方塊按鈕 */}
-      <TextBoxStyle defaultValue={value}/>
+      <TextBoxStyle defaultValue={value} onChange={(e)=>setSize(e.target.value)}/>
     </Box>
   );
 }

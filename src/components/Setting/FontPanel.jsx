@@ -1,5 +1,6 @@
 import { Box,Typography,Divider  } from "@mui/material";
 import { TextBoxStyle } from "../../style/settingStyle";
+import PropTypes from "prop-types";
 
 export default function FontPanel({text,value,setSize}) {
   return (
@@ -18,3 +19,12 @@ export default function FontPanel({text,value,setSize}) {
     </Box>
   );
 }
+
+FontPanel.propTypes = {
+  text: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  setSize: PropTypes.func.isRequired,
+};

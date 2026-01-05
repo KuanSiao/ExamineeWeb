@@ -20,12 +20,7 @@ export default function WarningPage() {
   const navigate=useNavigate();
   const dispatch=useDispatch();
   dispatch(setBannerText('注意事項'));
-  const handleOpen = () => {
-    setOpenModal(true);
-  };
-  const handlerCloseModal = () => {
-    setOpenModal(false);
-  };
+
 
   const handlerSubmitBtn=()=>{
     console.log('進入練習');
@@ -76,7 +71,7 @@ export default function WarningPage() {
     >
       <ModalCustmize
         open={openModal}
-        onClose={handlerCloseModal}
+        onClose={()=>setOpenModal(false)}
         aria-labelledby="是否開始測驗"
         aria-describedby="測驗時間為 5 分鐘"
         model={alertInfo}
@@ -119,7 +114,7 @@ export default function WarningPage() {
             disabled={!isCheck}
             overrideDisabled
             overrideHover
-            onClick={handleOpen}
+            onClick={()=>setOpenModal(true)}
           >
             開始測驗一
           </ButtonCustmize>

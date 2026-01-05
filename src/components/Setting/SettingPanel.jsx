@@ -1,8 +1,14 @@
 import styled from "@emotion/styled";
-import { Box, Stack, Typography, Divider,DialogContentText  } from "@mui/material";
+import {
+  Box,
+  Stack,
+  Typography,
+  Divider,
+  DialogContentText,
+} from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setExamColor } from "../../store/slice/ColorSlice";
+import { resetColor, setExamColor } from "../../store/slice/ColorSlice";
 import ColorPanel from "../Common/ColorPanel";
 import FontPanel from "../Setting/FontPanel";
 import ButtonCustmize from "../Common/ButtonCustmize";
@@ -22,9 +28,20 @@ export default function SettingPanel() {
     fontSize: 16,
   });
 
-  const handlerSaveSetting = () => {
-    dispatch(setExamColor(examSetting));
-    setSubmitModal(true);
+
+  const handlerSubmitModalBtn=()=>{
+     dispatch(setExamColor(examSetting));
+     setSubmitModal(false);
+  }
+
+  const handlerResetModalBtn = () => {
+    dispatch(resetColor());
+    setCancelModal(false);
+    setExamSetting({
+      backgroundColor: "#000000",
+      fontColor: "#ffffff",
+      fontSize: 16,
+    });
   };
 
   const submitInfo = {
@@ -67,13 +84,15 @@ export default function SettingPanel() {
     <Stack direction="column" spacing={2}>
       <ModalCustmize
         open={submitModal}
-        onClose={()=>setSubmitModal(false)}
+        onClose={() => setSubmitModal(false)}
         model={submitInfo}
+        onClick={handlerSubmitModalBtn}
       />
       <ModalCustmize
         open={cancelModal}
-        onClose={()=>setCancelModal(false)}
+        onClose={() => setCancelModal(false)}
         model={cnacelInfo}
+        onClick={handlerResetModalBtn}
       />
       <Box sx={{ p: 5 }}>
         <Typography variant="h3" sx={{ textAlign: "center", fontWeight: 500 }}>
@@ -116,7 +135,7 @@ export default function SettingPanel() {
           spacing={5}
           sx={{ mt: 5 }}
         >
-          <ButtonCustmize width="30%" height="50" onClick={handlerSaveSetting}>
+          <ButtonCustmize width="30%" height="50" onClick={()=>setSubmitModal(true)}>
             儲存設定
           </ButtonCustmize>
           <ButtonCustmize
@@ -124,7 +143,7 @@ export default function SettingPanel() {
             height="50"
             sx={{ ml: 2 }}
             color="#a19d9c"
-            onClick={()=>setCancelModal(true)}
+            onClick={() => setCancelModal(true)}
           >
             還原為預設
           </ButtonCustmize>

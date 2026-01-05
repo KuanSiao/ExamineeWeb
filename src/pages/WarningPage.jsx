@@ -83,7 +83,7 @@ export default function WarningPage() {
         sx={{ fontWeight: "bold", mb: 4 }}
         align="center"
       >
-        測驗科目:數字鍵輸入
+        測驗科目:中文輸入
       </Typography>
       {/* 規則卡片 */}
       <Card

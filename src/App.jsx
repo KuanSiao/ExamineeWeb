@@ -12,6 +12,7 @@ import Setting from "./pages/Setting";
 import ExamInput from "./pages/ExamInput";
 import Introduction from "./components/App/Introduction";
 import PraticeExamPage from "./pages/PraticeExamPage";
+import NumberExamInput from "./pages/NumberExamInput";
 
 function App() {
   const location = useLocation()
@@ -34,6 +35,7 @@ function App() {
               <Route path="setting" element={<Setting />}></Route>
               <Route path="examInput" element={<ExamInput />}></Route>
               <Route path="examPractice" element={<PraticeExamPage />}></Route>
+              <Route path="numberInput" element={<NumberExamInput/>}></Route>
             </Routes>
           </Container>
           <Footer />

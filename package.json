@@ -16,7 +16,6 @@
     "@emotion/styled": "^11.14.1",
     "@fontsource/roboto": "^5.2.9",
     "@fortawesome/fontawesome-free": "^7.1.0",
-    "@monaco-editor/react": "^4.7.0",
     "@mui/icons-material": "^7.3.6",
     "@mui/material": "^7.3.6",
     "@reduxjs/toolkit": "^2.11.0",

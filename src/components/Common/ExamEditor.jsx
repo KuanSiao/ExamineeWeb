@@ -69,7 +69,7 @@ const ExamEditor = ({
   //width = 600,  //由外層控制
   height = 200,
   fontSize = 18,
-  textColor = "#fff",
+  fontColor = "#fff",
   backgroundColor = "#000",
 }) => {
   const theme = useMemo(
@@ -78,19 +78,19 @@ const ExamEditor = ({
         {
           "&": {
             backgroundColor,
-            color: textColor,
+            color: fontColor,
             fontSize: `${fontSize}px`,
           },
           ".cm-scroller": {
             backgroundColor,
           },
           ".cm-content": {
-            caretColor: textColor,
+            caretColor: fontColor,
           },
         },
         { dark: true }
       ),
-    [backgroundColor, textColor, fontSize]
+    [backgroundColor, fontColor, fontSize]
   );
 
   return (

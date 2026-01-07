@@ -96,8 +96,8 @@ export default function NumberExamInput() {
           </Paper>
         </Grid>
       </Grid>
-      <Box sx={{mt:3,display:"flex",justifyContent:"center"}}>
-         <ExamEditor height="25vh"  width="50vw" themeName="vs-dark" />       
+      <Box sx={{mt:3,width:"50%",mx:"auto"}}>
+         <ExamEditor readonly={false}/>       
       </Box>
     </Box>
   );

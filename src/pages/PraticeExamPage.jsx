@@ -3,12 +3,15 @@ import { Editor } from "@monaco-editor/react";
 import { useState,useEffect,useRef  } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {useCurrentBreakpoint} from "../helper/LayoutHelper";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ButtonCustmize from "../components/Common/ButtonCustmize";
 import SettingPanel from "../components/Setting/SettingPanel";
 import DrawerPanel from "../components/Common/DrawerPanel";
 
 export default function PraticeExamPage() {
+  const breakPoint=useCurrentBreakpoint();
+  console.log(breakPoint);
   const [isOpen, setOpen] = useState(open);
   const examSetting = useSelector((state) => state.colorFulTodo);
     // 存 Editor 實例
